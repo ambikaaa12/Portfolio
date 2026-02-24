@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ambika Kumari A S | AI & Full Stack Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4b8b5d6b16.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-calendar@latest/dist/github-calendar-responsive.css"/>
+
+<style>
+:root{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#ffffff;
+  --sub:#94a3b8;
+  --accent:#7c3aed;
+}
+
+/* Reset and body */
+*{ margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+body{ font-family:Outfit,sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+
+/* Animated Background */
+.animated-bg{
+  position:fixed; width:100%; height:100%; z-index:-1;
+  background:linear-gradient(120deg,#0f172a,#111827,#0f172a);
+}
+.animated-bg::before{
+  content:""; position:absolute; width:600px; height:600px; border-radius:50%;
+  background:radial-gradient(circle, rgba(124,58,237,0.25), transparent 70%);
+  animation:float 18s infinite linear; top:-200px; left:-200px;
+}
+@keyframes float{
+  0%{ transform:translate(0,0);}
+  50%{ transform:translate(40px,40px);}
+  100%{ transform:translate(0,0);}
+}
+
+/* NAVBAR */
+nav{
+  position:fixed; top:0; width:100%; padding:12px 40px;
+  display:flex; justify-content:space-between; align-items:center;
+  background:rgba(0,0,0,0.7); backdrop-filter:blur(10px); z-index:1000;
+}
+.nav-links{ display:flex; gap:12px; align-items:center; }
+.nav-links a{
+  text-decoration:none; color:var(--sub); font-size:14px; position:relative;
+}
+.nav-links a::after{
+  content:""; position:absolute; width:0%; height:2px; bottom:-2px; left:0;
+  background:var(--accent); transition:0.3s;
+}
+.nav-links a:hover::after{ width:100%; }
+.like-btn, #themeToggle{
+  background:var(--accent); padding:5px 12px; border-radius:20px;
+  cursor:pointer; font-size:13px; color:#fff; border:none;
+  transition: transform 0.2s;
+}
+.like-btn:hover, #themeToggle:hover{ transform: scale(1.1); }
+
+/* HERO + SKILLS ABOVE FOLD */
+.hero-skills-wrapper{
+  min-height:calc(100vh - 60px); display:flex; flex-direction:column;
+  justify-content:center; gap:25px; padding-top:60px;
+}
+.hero{ display:flex; align-items:center; justify-content:space-between; gap:40px; }
+.hero-left{ flex:1; display:flex; justify-content:center; }
+.image-frame{ width:220px; height:220px; border-radius:50%; overflow:hidden; border:5px solid var(--accent); }
+.image-frame img{ width:100%; height:100%; object-fit:cover; object-position:center center; }
+.hero-right{ flex:2; color:var(--text); }
+.hero-right h1{ font-size:36px; margin-bottom:10px; color:var(--text); }
+.subtitle{ color:var(--sub); margin-bottom:12px; line-height:1.4; font-size:14px; }
+.location{ margin-bottom:12px; font-size:13px; color:var(--sub);}
+.animated-text{
+  display:inline-block; color: var(--accent); border-right:2px solid var(--accent);
+  white-space: nowrap; overflow: hidden; font-weight:700; font-size:32px;
+}
+
+/* SECTION */
+section{ padding:40px 40px; }
+.section-title{ text-align:center; font-size:28px; margin-bottom:30px; }
+section h2{ text-align:center; font-size:32px; margin-bottom:30px; }
+
+/* SKILLS */
+.skills-wrapper{
+  overflow:hidden; position:relative;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  perspective:1000px;
+}
+.skills-track{
+  display:flex; gap:25px; width:max-content; animation:scrollLeft 40s linear infinite;
+  transform-style: preserve-3d;
+}
+.skills-track:hover{ animation-play-state: paused; }
+.skill-item{
+  display:flex; flex-direction:column; align-items:center; min-width:80px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; transform-origin:center center;
+  animation:rotate3d 5s linear infinite alternate;
+}
+.skill-item:hover{
+  transform: scale(1.15) rotateY(10deg);
+  box-shadow: 0 0 12px var(--accent);
+}
+.skill-item img{ width:45px; }
+.skill-item span{ margin-top:5px; color:var(--sub); font-size:12px; }
+@keyframes scrollLeft{ 0%{ transform: translateX(0%); } 100%{ transform: translateX(-50%); } }
+@keyframes rotate3d{ 0%{ transform: rotateY(-5deg); } 100%{ transform: rotateY(5deg); } }
+
+/* CERTIFICATES */
+.cert-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; }
+.cert-card{
+  background:var(--card); padding:12px; border-radius:12px; transition:0.3s; cursor:pointer;
+  text-align:center; text-decoration:none; color:inherit;
+  display:flex; flex-direction:column; align-items:center;
+}
+.cert-card:hover{ transform:translateY(-4px); box-shadow:0 0 12px var(--accent);}
+.cert-card img{ width:50%; border-radius:3px; margin-bottom:8px; }
+.cert-card h3{ margin-bottom:4px; }
+.cert-card p{ margin-bottom:8px; color:var(--sub); font-size:13px; }
+
+/* GITHUB CONTRIBUTIONS */
+#github-graph{ margin-top:16px; }
+
+/* FOOTER */
+footer{ padding:30px; text-align:center; background:var(--card); font-size:13px; color:var(--text);}
+footer a{ color:var(--accent); text-decoration:none; }
+.quote{ margin-top:10px; font-style:italic; color:var(--sub); }
+.visitor-footer{ margin-top:8px; color:var(--accent); font-weight:600; }
+
+/* Back to Top Button */
+#backToTop{
+  position:fixed; bottom:25px; right:25px; width:40px; height:40px;
+  font-size:18px; border:none; border-radius:50%; background:var(--accent);
+  color:#fff; cursor:pointer; display:none; z-index:1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.3s ease;
+}
+#backToTop:hover{ transform: scale(1.2); }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-skills-wrapper{min-height:auto;}
+  .hero{flex-direction:column; gap:20px;}
+  .hero-left, .hero-right{text-align:center;}
+  .hero-left{order:1;} .hero-right{order:2;}
+  .animated-text{font-size:29px;}
+}
+</style>
+</head>
+<body>
+<div class="animated-bg"></div>
+
+<nav>
+  <div><strong>Ambika Kumari A S</strong></div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#github-contributions">GitHub</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#footer">Contact</a>
+    <div class="like-btn" onclick="likePortfolio()">❤️ <span id="likeCount">0</span></div>
+  </div>
+</nav>
+<div class="hero-skills-wrapper">
+  <section class="hero">
+    <div class="hero-left">
+      <div class="image-frame">
+        <img src="ambika photo.jpg" alt="Ambika Photo">
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1>
+        <span id="heroName">Ambika Kumari A S</span> <br>
+        <span class="animated-text" id="heroTitle"></span>
+      </h1>
+      <p class="subtitle" id="heroSubtitle">
+        BCA student building intelligent systems and scalable web applications using Python, Java and modern technologies. Focused on solving real-world problems with structured thinking and clean implementation.
+      </p>
+      <div class="location">📍 Bangalore, India</div>
+      <a href="resume.pdf" download style="color:var(--accent)">Download Resume</a>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <h2>Technical Stack</h2>
+    <div class="skills-wrapper">
+      <div class="skills-track">
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"><span>C</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"><span>Java</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"><span>Python</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"><span>HTML</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"><span>CSS</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"><span>JS</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"><span>React</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"><span>Node</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"><span>MySQL</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"><span>MongoDB</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"><span>Git</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"><span>GitHub</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"><span>Docker</span></div>
+        <!-- duplicate immediately for seamless scroll -->
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"><span>C</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"><span>Java</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"><span>Python</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"><span>HTML</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"><span>CSS</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"><span>JS</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"><span>React</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"><span>Node</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"><span>MySQL</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"><span>MongoDB</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"><span>Git</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"><span>GitHub</span></div>
+<div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"><span>Docker</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="github-contributions" class="section">
+  <h2>GitHub Contributions</h2>
+  <div id="github-graph" style="max-width:700px;margin:auto;"></div>
+  <p style="color:var(--sub); text-align:center; margin-top:5px;">Hover over squares to see commits</p>
+</section>
+
+<section id="certificates">
+  <h2 class="section-title">Certifications</h2>
+  <div class="cert-grid">
+    <a href="ibm-cert.pdf" target="_blank" class="cert-card">
+      <h3>IBM AI+ Sustainability Internship</h3>
+      <p>Issued by IBM</p>
+      <p>(click to view certificate)</p>
+    </a>
+    <a href="hp-cert.pdf" target="_blank" class="cert-card">
+      <h3>HP Data Science & Analytics</h3>
+      <p>Issued by HP</p>
+      <p>(click to view certificate)</p>
+    </a>
+  </div>
+</section>
+
+<footer id="footer">
+  <h2>Let’s Connect</h2>
+  <p>Email: <a href="mailto:ambikakumari9901@gmail.com">ambikakumari9901@gmail.com</a></p>
+  <p><a href="https://github.com/ambikaaa12" target="_blank">GitHub</a> | <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a></p>
+  <div class="visitor-footer">You are visitor #<span id="visitorCount"></span></div>
+  <div class="quote">"Technology is best when it empowers people and creates meaningful impact."</div>
+  <div style="margin-top:10px;">Crafted with ❤️ by Ambika Kumari A S · 2026</div>
+</footer>
+
+<button id="backToTop">⬆️</button>
+
+<script src="https://cdn.jsdelivr.net/npm/github-calendar@latest/dist/github-calendar.min.js"></script>
+<script>
+/* Visitor Counter */
+if(!localStorage.getItem("visits")) localStorage.setItem("visits",1);
+else localStorage.setItem("visits", parseInt(localStorage.getItem("visits"))+2);
+document.getElementById("visitorCount").innerText = localStorage.getItem("visits");
+
+/* Like System */
+/* Like System DEFAULT 212 (No Other Changes) */
+if (!localStorage.getItem("likes")) {
+  localStorage.setItem("likes", 212);
+}
+
+if (localStorage.getItem("liked") === "true") {
+  document.querySelector(".like-btn").style.opacity = "0.6";
+}
+
+function likePortfolio() {
+  if (localStorage.getItem("liked") === "true") return;
+
+  let likes = parseInt(localStorage.getItem("likes"));
+  likes++;
+  localStorage.setItem("likes", likes);
+  localStorage.setItem("liked", "true");
+
+  document.getElementById("likeCount").innerText = likes;
+  document.querySelector(".like-btn").style.opacity = "0.6";
+}
+
+document.getElementById("likeCount").innerText = localStorage.getItem("likes");
+/* Animated typing text */
+
+const titles=["AI & Full Stack Developer","Python Developer","Web App Enthusiast"];
+let index=0; const textSpan=document.querySelector(".animated-text");
+function showTitle(){
+  let title=titles[index]; let i=0; textSpan.innerText="";
+  const interval=setInterval(()=>{ textSpan.innerText+=title[i]; i++;
+    if(i===title.length){ clearInterval(interval); setTimeout(()=>{ index=(index+1)%titles.length; showTitle(); },2000); }
+  },100);
+}
+showTitle();
+
+/* Back to Top */
+const backToTop=document.getElementById("backToTop");
+window.addEventListener("scroll",()=>{ backToTop.style.display=(window.scrollY>200)?"block":"none"; });
+backToTop.addEventListener("click",()=>{ window.scrollTo({top:0,behavior:"smooth"}); });
+
+/* GitHub Contributions */
+new GitHubCalendar("#github-graph","ambikaaa12",{ responsive:true, global_stats:false, tooltips:true, summary_text:"Contributions in the last year" });
+</script>
+</body>
+</html>
