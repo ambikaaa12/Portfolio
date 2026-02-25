@@ -260,10 +260,16 @@ else localStorage.setItem("visits", parseInt(localStorage.getItem("visits"))+2);
 document.getElementById("visitorCount").innerText = localStorage.getItem("visits");
 
 /* Like System */
-/* Like System DEFAULT 212 (No Other Changes) */
-if (!localStorage.getItem("likes")) {
+/* Like System DEFAULT 212 (Clean Version) */
+
+let storedLikes = localStorage.getItem("likes");
+
+if (storedLikes === null) {
   localStorage.setItem("likes", 212);
+  storedLikes = 212;
 }
+
+document.getElementById("likeCount").innerText = storedLikes;
 
 if (localStorage.getItem("liked") === "true") {
   document.querySelector(".like-btn").style.opacity = "0.6";
@@ -274,14 +280,13 @@ function likePortfolio() {
 
   let likes = parseInt(localStorage.getItem("likes"));
   likes++;
+
   localStorage.setItem("likes", likes);
   localStorage.setItem("liked", "true");
 
   document.getElementById("likeCount").innerText = likes;
   document.querySelector(".like-btn").style.opacity = "0.6";
 }
-
-document.getElementById("likeCount").innerText = localStorage.getItem("likes");
 /* Animated typing text */
 
 const titles=["AI & Full Stack Developer","Python Developer","Web App Enthusiast"];
@@ -303,4 +308,4 @@ backToTop.addEventListener("click",()=>{ window.scrollTo({top:0,behavior:"smooth
 new GitHubCalendar("#github-graph","ambikaaa12",{ responsive:true, global_stats:false, tooltips:true, summary_text:"Contributions in the last year" });
 </script>
 </body>
-</html>
+</html>  
