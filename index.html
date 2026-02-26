@@ -65,9 +65,10 @@ nav{
   min-height:calc(100vh - 60px); display:flex; flex-direction:column;
   justify-content:center; gap:25px; padding-top:60px;
 }
-.hero{ display:flex; align-items:center; justify-content:space-between; gap:40px; }
+.hero{ display:flex; align-items:center; justify-content:space-between; gap:50px; }
 .hero-left{ flex:1; display:flex; justify-content:center; }
-.image-frame{ width:220px; height:220px; border-radius:50%; overflow:hidden; border:5px solid var(--accent); }
+.image-frame{ width:300px; height:300px; border-radius:50%; overflow:hidden; border:5px solid var(--accent); }
+.image-frame:hover{ box-shadow:0 0 15px var(--accent); }
 .image-frame img{ width:100%; height:100%; object-fit:cover; object-position:center center; }
 .hero-right{ flex:2; color:var(--text); }
 .hero-right h1{ font-size:36px; margin-bottom:10px; color:var(--text); }
@@ -137,7 +138,8 @@ footer a{ color:var(--accent); text-decoration:none; }
   color:#fff; cursor:pointer; display:none; z-index:1000;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: transform 0.3s ease;
 }
-#backToTop:hover{ transform: scale(1.2); }
+#backToTop:hover{ 
+  transform: scale(1.2); }
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -233,9 +235,19 @@ footer a{ color:var(--accent); text-decoration:none; }
       <p>Issued by IBM</p>
       <p>(click to view certificate)</p>
     </a>
+    <a href="jpmorgon-cert.pdf" target="_blank" class="cert-card">
+      <h3>Software Engineering</h3>
+      <p>Issued by JPMorgon Chase&Co</p>
+      <p>(click to view certificate)</p>
+    </a>
     <a href="hp-cert.pdf" target="_blank" class="cert-card">
       <h3>HP Data Science & Analytics</h3>
       <p>Issued by HP</p>
+      <p>(click to view certificate)</p>
+    </a>
+    <a href="mastercard-cert.pdf" target="_blank" class="cert-card">
+      <h3>Cybersecurity</h3>
+      <p>Issued by Mastercard</p>
       <p>(click to view certificate)</p>
     </a>
   </div>
@@ -246,7 +258,7 @@ footer a{ color:var(--accent); text-decoration:none; }
   <p>Email: <a href="mailto:ambikakumari9901@gmail.com">ambikakumari9901@gmail.com</a></p>
   <p><a href="https://github.com/ambikaaa12" target="_blank">GitHub</a> | <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a></p>
   <div class="visitor-footer">You are visitor #<span id="visitorCount"></span></div>
-  <div class="quote">"Technology is best when it empowers people and creates meaningful impact."</div>
+  <div class="quote">“The best technology doesn’t just solve problems — it empowers people and creates lasting impact.”</div>
   <div style="margin-top:10px;">Crafted with ❤️ by Ambika Kumari A S · 2026</div>
 </footer>
 
