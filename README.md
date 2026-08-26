@@ -13,7 +13,6 @@ A modern and responsive personal portfolio website created to showcase my skills
 * Links to GitHub and LinkedIn
 
 ## 🛠️ Technologies Used
-
 * HTML
 * CSS
 * JavaScript
